@@ -1,0 +1,65 @@
+{
+  "license": "MIT",
+  "version": "0.0.0",
+  "name": "webmanifest-cli",
+  "homepage": "https://github.com/ymkz/webmanifest-cli",
+  "description": "A generator of webmanifest and icons",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "webmanifest": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "dev": "ts-node src/index.ts --icon public/icon.svg",
+    "format": "prettier --check 'src/**/*.ts'",
+    "typecheck": "tsc --noEmit",
+    "clean": "del dist",
+    "compile": "tsc",
+    "build": "run-s clean compile",
+    "release": "np --no-tests --no-yarn"
+  },
+  "dependencies": {
+    "fs-extra": "8.1.0",
+    "image-size": "0.8.3",
+    "sharp": "0.23.1",
+    "typed-cli": "0.2.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@types/fs-extra": "8.0.0",
+    "@types/node": "12.7.12",
+    "@types/sharp": "0.22.3",
+    "del-cli": "3.0.0",
+    "husky": "3.0.9",
+    "np": "5.1.1",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.18.2",
+    "ts-node": "8.4.1",
+    "typescript": "3.6.4",
+    "yarnhook": "0.4.3"
+  },
+  "author": {
+    "name": "ymkz",
+    "email": "ymkzly@gmail.com",
+    "url": "https://github.com/ymkz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ymkz/webmanifest-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/ymkz/webmanifest-cli/issues"
+  },
+  "keywords": [
+    "generator",
+    "webmanifest",
+    "icon"
+  ]
+}
