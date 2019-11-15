@@ -5,10 +5,11 @@ import { cli, option } from 'typed-cli'
 import { imageSize } from 'image-size'
 import sharp from 'sharp'
 
-const MIN_ACCEPT_IMAGE_RESOLUTION = 512 as const
-const DEFAULT_WEBMANIFEST_PATH = 'public/manifest.webmanifest' as const
-const DEFAULT_OUTPUT_PATH = 'public' as const
-const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72' as const
+const SPLIT_TARGET_CHAR = ','
+const MIN_ACCEPT_IMAGE_RESOLUTION = 512
+const DEFAULT_WEBMANIFEST_PATH = 'public/manifest.webmanifest'
+const DEFAULT_OUTPUT_PATH = 'public'
+const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
 
 !(async () => {
   const { options } = cli({
@@ -57,12 +58,14 @@ const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72' as const
     throw new Error(`Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`)
   }
 
-  const outputSizes = options.sizes.includes(',')
+  const ascendingOrder = (a: number, b: number) => (a < b ? 1 : -1)
+
+  const outputSizes = options.sizes.includes(SPLIT_TARGET_CHAR)
     ? options.sizes
-        .split(',')
-        .map(size => Number(size))
+        .split(SPLIT_TARGET_CHAR)
+        .map(Number)
         .filter(Number)
-        .sort((a, b) => (a < b ? 1 : -1))
+        .sort(ascendingOrder)
     : [Number(options.sizes)].filter(Number)
 
   try {
