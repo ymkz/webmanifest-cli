@@ -10,6 +10,13 @@
       rel="noopener noreferrer"
     >
   </a>
+  <a href="https://twitter.com/ymkzly">
+    <img
+      src="https://flat.badgen.net/github/checks/ymkz/webmanifest-cli?icon=github"
+      target="_blank"
+      rel="noopener noreferrer"
+    />
+  </a>
   <a href="https://prettier.io">
     <img
       src="https://flat.badgen.net/badge/formatter/prettier/ff69b4"
