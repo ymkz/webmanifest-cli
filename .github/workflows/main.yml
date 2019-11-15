@@ -1,0 +1,18 @@
+on: push
+name: Continuous Integration
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${GITHUB_CONTEXT}"
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Run prettier
+        run: npm run format
