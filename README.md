@@ -10,7 +10,14 @@
       rel="noopener noreferrer"
     >
   </a>
-  <a href="https://twitter.com/ymkzly">
+  <a href="https://npmjs.com/package/webmanifest-cli">
+    <img
+      src="https://flat.badgen.net/npm/types/webmanifest-cli?icon=npm"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+  </a>
+  <a href="https://github.com/ymkz/webmanifest-cli">
     <img
       src="https://flat.badgen.net/github/checks/ymkz/webmanifest-cli?icon=github"
       target="_blank"
