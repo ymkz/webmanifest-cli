@@ -3,40 +3,54 @@
 </div>
 
 <p>
-  <a href="https://npmjs.com/package/webmanifest-cli">
-    <img
-      src="https://flat.badgen.net/npm/v/webmanifest-cli?icon=npm"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+  <a
+    href="https://npmjs.com/package/webmanifest-cli"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/npm/v/webmanifest-cli?icon=npm" />
   </a>
-  <a href="https://npmjs.com/package/webmanifest-cli">
-    <img
-      src="https://flat.badgen.net/npm/types/webmanifest-cli?icon=npm"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+  <a
+    href="https://npmjs.com/package/webmanifest-cli"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/npm/types/webmanifest-cli?icon=npm" />
   </a>
-  <a href="https://github.com/ymkz/webmanifest-cli">
-    <img
-      src="https://flat.badgen.net/github/checks/ymkz/webmanifest-cli?icon=github"
-      target="_blank"
-      rel="noopener noreferrer"
-    />
+  <a
+    href="https://github.com/ymkz/webmanifest-cli"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/github/checks/ymkz/webmanifest-cli?icon=github" />
   </a>
-  <a href="https://prettier.io">
-    <img
-      src="https://flat.badgen.net/badge/formatter/prettier/ff69b4"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+  <a
+    href="https://app.dependabot.com/accounts/ymkz/repos/214224516"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/dependabot/ymkz/webmanifest-cli?icon=dependabot" />
   </a>
-  <a href="https://twitter.com/ymkzly">
-    <img
-      src="https://flat.badgen.net/twitter/follow/ymkzly?icon=twitter"
-      target="_blank"
-      rel="noopener noreferrer"
-    />
+  <a
+    href="https://libraries.io/npm/webmanifest-cli"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://img.shields.io/librariesio/release/npm/webmanifest-cli?style=flat-square" />
+  </a>
+  <a
+    href="https://prettier.io"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/badge/formatter/prettier/ff69b4" />
+  </a>
+  <a
+    href="https://twitter.com/ymkzly"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src="https://flat.badgen.net/twitter/follow/ymkzly?icon=twitter" />
   </a>
 </p>
 
