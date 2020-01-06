@@ -32,7 +32,7 @@
     "sharp": "0.23.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.2.0",
+    "@commitlint/cli": "8.3.4",
     "@commitlint/config-conventional": "8.2.0",
     "@types/fs-extra": "8.0.1",
     "@types/node": "12.12.21",
