@@ -1,56 +1,9 @@
 {
-  "license": "MIT",
-  "version": "0.0.1",
   "name": "webmanifest-cli",
-  "homepage": "https://github.com/ymkz/webmanifest-cli",
   "description": "A generator of webmanifest and icons",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "bin": {
-    "webmanifest": "dist/index.js"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "dev": "ts-node src/index.ts",
-    "dev:default": "ts-node src/index.ts --icon public/icon.svg",
-    "format": "prettier --check 'src/**/*.ts'",
-    "typecheck": "tsc --noEmit",
-    "clean": "del dist",
-    "compile": "tsc",
-    "build": "run-s clean compile",
-    "release": "standard-version"
-  },
-  "dependencies": {
-    "fs-extra": "8.1.0",
-    "image-size": "0.8.3",
-    "meow": "6.0.1",
-    "sharp": "0.24.1"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "8.3.5",
-    "@commitlint/config-conventional": "8.3.4",
-    "@types/fs-extra": "8.1.0",
-    "@types/node": "13.7.4",
-    "@types/sharp": "0.24.0",
-    "del-cli": "3.0.0",
-    "husky": "4.2.3",
-    "npm-run-all": "4.1.5",
-    "prettier": "1.19.1",
-    "standard-version": "7.1.0",
-    "ts-node": "8.6.2",
-    "typescript": "3.8.2",
-    "yarnhook": "0.4.3"
-  },
-  "author": {
-    "name": "ymkz",
-    "email": "ymkzly@gmail.com",
-    "url": "https://github.com/ymkz"
-  },
+  "license": "MIT",
+  "author": "ymkz <ymkzly@gmail.com> (https://github.com/ymkz)",
+  "homepage": "https://github.com/ymkz/webmanifest-cli",
   "repository": {
     "type": "git",
     "url": "https://github.com/ymkz/webmanifest-cli"
@@ -58,9 +11,61 @@
   "bugs": {
     "url": "https://github.com/ymkz/webmanifest-cli/issues"
   },
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": {
+    "webmanifest": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-s clean compile",
+    "clean": "del dist",
+    "compile": "tsc",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint 'src/**/*.ts'",
+    "prepare": "run-s clean compile",
+    "release": "semantic-release",
+    "typecheck": "tsc --noEmit"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "image-size": "^0.8.3",
+    "meow": "^6.0.1",
+    "sharp": "^0.24.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.7.7",
+    "@types/sharp": "^0.24.0",
+    "@ymkz/eslint-config": "^1.2.0",
+    "@ymkz/prettier-config": "^1.0.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "prettier-package-json": "^2.1.3",
+    "semantic-release": "^17.0.4",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3",
+    "yarnhook": "^0.4.3"
+  },
   "keywords": [
     "generator",
-    "webmanifest",
-    "icon"
-  ]
+    "icon",
+    "webmanifest"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
 }

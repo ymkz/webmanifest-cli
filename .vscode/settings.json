@@ -1,4 +1,10 @@
 {
+  "editor.codeActionsOnSave": { "source.fixAll": true },
   "editor.formatOnSave": true,
-  "editor.rulers": [100]
+  "editor.rulers": [120],
+  "emmet.excludeLanguages": ["markdown", "javascript", "typescript"],
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  "[javascript]": { "editor.formatOnSave": false },
+  "[typescript]": { "editor.formatOnSave": false }
 }

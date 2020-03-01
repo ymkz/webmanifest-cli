@@ -89,6 +89,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# application
+# Production
 dist
-example
