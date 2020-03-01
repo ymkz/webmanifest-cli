@@ -33,7 +33,8 @@
 ## Install
 
 ```sh
-npm i --save-dev webmanifest-cli
+yarn add -D webmanifest-cli
+npm i -D webmanifest-cli
 ```
 
 ## Usage
