@@ -4,20 +4,23 @@
   <a href="https://npmjs.com/package/webmanifest-cli" target="_blank" rel="noopener noreferrer">
     <img src="https://flat.badgen.net/npm/v/webmanifest-cli?icon=npm" />
   </a>
+  <a href="https://www.npmjs.com/package/webmanifest-cli" target="_blank" rel="noopener noreferrer">
+    <img src="https://flat.badgen.net/npm/license/webmanifest-cli?icon=npm" />
+  </a>
   <a href="https://npmjs.com/package/webmanifest-cli" target="_blank" rel="noopener noreferrer">
     <img src="https://flat.badgen.net/npm/types/webmanifest-cli?icon=npm" />
   </a>
   <a href="https://github.com/ymkz/webmanifest-cli" target="_blank" rel="noopener noreferrer">
     <img src="https://flat.badgen.net/github/checks/ymkz/webmanifest-cli?icon=github" />
   </a>
-  <a href="https://app.dependabot.com/accounts/ymkz/repos/214224516" target="_blank" rel="noopener noreferrer">
-    <img src="https://flat.badgen.net/dependabot/ymkz/webmanifest-cli?icon=dependabot" />
-  </a>
-  <a href="https://libraries.io/npm/webmanifest-cli" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/librariesio/release/npm/webmanifest-cli?style=flat-square" />
+  <a href="https://app.renovatebot.com/dashboard#github/ymkz/webmanifest-cli" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/renovate-enabled-green?style=flat-square" />
   </a>
   <a href="https://prettier.io" target="_blank" rel="noopener noreferrer">
     <img src="https://flat.badgen.net/badge/formatter/prettier/ff69b4" />
+  </a>
+  <a href="https://eslint.org" target="_blank" rel="noopener noreferrer">
+    <img src="https://flat.badgen.net/badge/linter/eslint/4b32c3" />
   </a>
   <a href="https://twitter.com/ymkzly" target="_blank" rel="noopener noreferrer">
     <img src="https://flat.badgen.net/twitter/follow/ymkzly?icon=twitter" />
@@ -49,7 +52,7 @@ $ webmanifest --icon public/icon.svg --manifest public/manifest.webmanifest --ou
 👤 **ymkz**
 
 - Twitter: [@ymkzly](https://twitter.com/ymkzly)
-- Github: [@ymkz](https://github.com/ymkz)
+- GitHub: [@ymkz](https://github.com/ymkz)
 
 ## 🤝 Contributing
 
