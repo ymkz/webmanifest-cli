@@ -31,7 +31,7 @@
 
 ## Prerequisites
 
-- node >=10
+- node >=12
 
 ## Install
 
