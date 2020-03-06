@@ -1,3 +1,4 @@
 root: true
 extends:
   - '@ymkz/eslint-config'
+  - '@ymkz/eslint-config/typescript'
