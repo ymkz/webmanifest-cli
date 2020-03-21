@@ -1,3 +1,10 @@
+## [0.1.3](https://github.com/ymkz/webmanifest-cli/compare/v0.1.2...v0.1.3) (2020-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to ^0.25.2 ([3369668](https://github.com/ymkz/webmanifest-cli/commit/3369668f6d388b917d61ced659215127ff3feb17))
+
 ## [0.1.2](https://github.com/ymkz/webmanifest-cli/compare/v0.1.1...v0.1.2) (2020-03-20)
 
 
