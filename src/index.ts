@@ -92,25 +92,18 @@ const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
   const ascendingOrder = (a: number, b: number) => (a < b ? 1 : -1)
 
   const outputSizes = cli.flags.sizes.includes(ICON_SIZE_DELIMITER)
-    ? cli.flags.sizes
-        .split(ICON_SIZE_DELIMITER)
-        .map(Number)
-        .filter(Number)
-        .sort(ascendingOrder)
+    ? cli.flags.sizes.split(ICON_SIZE_DELIMITER).map(Number).filter(Number).sort(ascendingOrder)
     : [Number(cli.flags.sizes)].filter(Number)
 
   for (const size of outputSizes) {
-    await sharp(cli.flags.icon)
-      .resize(size, size)
-      .png()
-      .toFile(`${cli.flags.outputIcon}/icon-${size}x${size}.png`)
+    await sharp(cli.flags.icon).resize(size, size).png().toFile(`${cli.flags.outputIcon}/icon-${size}x${size}.png`)
     console.log(`Output icon: ${cli.flags.outputIcon}/icon-${size}x${size}.png`)
   }
 
   const inputManifest = await readJSON(cli.flags.manifest)
   const outputManifestContent = {
     ...inputManifest,
-    icons: outputSizes.map(size => ({
+    icons: outputSizes.map((size) => ({
       src: `icon-${size}x${size}.png`,
       sizes: `${size}x${size}`,
       type: 'image/png',
