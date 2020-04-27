@@ -44,7 +44,7 @@
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
     "@types/fs-extra": "8.1.0",
-    "@types/node": "13.13.2",
+    "@types/node": "13.13.4",
     "@types/sharp": "0.25.0",
     "@ymkz/eslint-config": "1.4.0",
     "@ymkz/prettier-config": "1.1.0",
