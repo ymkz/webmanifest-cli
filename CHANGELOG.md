@@ -1,3 +1,10 @@
+## [0.1.5](https://github.com/ymkz/webmanifest-cli/compare/v0.1.4...v0.1.5) (2020-05-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to ^6.1.1 ([45fbb6d](https://github.com/ymkz/webmanifest-cli/commit/45fbb6dd3354797641b4039c11575486a67fc3de))
+
 ## [0.1.4](https://github.com/ymkz/webmanifest-cli/compare/v0.1.3...v0.1.4) (2020-03-27)
 
 
