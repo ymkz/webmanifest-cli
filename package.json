@@ -49,7 +49,7 @@
     "@ymkz/eslint-config": "1.4.0",
     "@ymkz/prettier-config": "1.1.0",
     "babel-plugin-module-resolver": "4.0.0",
-    "del-cli": "3.0.0",
+    "del-cli": "3.0.1",
     "eslint": "6.8.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.2",
