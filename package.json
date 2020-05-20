@@ -59,7 +59,7 @@
     "secretlint": "2.0.0",
     "semantic-release": "17.0.7",
     "ts-node": "8.10.1",
-    "typescript": "3.9.2",
+    "typescript": "3.9.3",
     "yarnhook": "0.4.3"
   },
   "keywords": [
