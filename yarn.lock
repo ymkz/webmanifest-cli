@@ -1625,7 +1625,7 @@ cli-table@^0.3.1:
   dependencies:
     colors "1.0.3"
 
-cli-truncate@^2.1.0:
+cli-truncate@2.1.0, cli-truncate@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-truncate/-/cli-truncate-2.1.0.tgz#c39e28bf05edcde5be3b98992a22deed5a2b93c7"
   integrity sha512-n8fOixwDD6b/ObinzTrp1ZKFzbgvKZvuz/TvejnLn1aQfC6r52XEx85FmuC+3HI+JM7coBRXUvNqEU2PHVrHpg==
@@ -4109,12 +4109,13 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@10.2.4:
-  version "10.2.4"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.4.tgz#0ed5d1cf06bdac0d3fbb003931bb6df3771fbf42"
-  integrity sha512-doTMGKXQAT34c3S3gwDrTnXmCZp/z1/92D8suPqqh755sKPT18ew1NoPNHxJdrvv1D4WrJ7CEnx79Ns3EdEFbg==
+lint-staged@10.2.6:
+  version "10.2.6"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.6.tgz#7d9658bd89dee946a859cbfc6e09566a9fb50b53"
+  integrity sha512-2oEBWyPZHkdyjKcIv2U6ay80Q52ZMlZZrUnfsV0WTVcgzPlt3o2t5UFy2v8ETUTsIDZ0xSJVnffWCgD3LF6xTQ==
   dependencies:
     chalk "^4.0.0"
+    cli-truncate "2.1.0"
     commander "^5.1.0"
     cosmiconfig "^6.0.0"
     debug "^4.1.1"
@@ -5021,7 +5022,6 @@ npm@^6.10.3:
     cmd-shim "^3.0.3"
     columnify "~1.5.4"
     config-chain "^1.1.12"
-    debuglog "*"
     detect-indent "~5.0.0"
     detect-newline "^2.1.0"
     dezalgo "~1.0.3"
@@ -5036,7 +5036,6 @@ npm@^6.10.3:
     has-unicode "~2.0.1"
     hosted-git-info "^2.8.8"
     iferr "^1.0.2"
-    imurmurhash "*"
     infer-owner "^1.0.4"
     inflight "~1.0.6"
     inherits "^2.0.4"
@@ -5055,14 +5054,8 @@ npm@^6.10.3:
     libnpx "^10.2.2"
     lock-verify "^2.1.0"
     lockfile "^1.0.4"
-    lodash._baseindexof "*"
     lodash._baseuniq "~4.6.0"
-    lodash._bindcallback "*"
-    lodash._cacheindexof "*"
-    lodash._createcache "*"
-    lodash._getnative "*"
     lodash.clonedeep "~4.5.0"
-    lodash.restparam "*"
     lodash.union "~4.6.0"
     lodash.uniq "~4.5.0"
     lodash.without "~4.4.0"
