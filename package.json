@@ -46,7 +46,7 @@
     "@types/fs-extra": "9.0.1",
     "@types/node": "13.13.9",
     "@types/sharp": "0.25.0",
-    "@ymkz/eslint-config": "1.4.0",
+    "@ymkz/eslint-config": "1.6.0",
     "@ymkz/prettier-config": "1.1.0",
     "babel-plugin-module-resolver": "4.0.0",
     "del-cli": "3.0.1",
