@@ -13,19 +13,17 @@ const DEFAULT_OUTPUT_ICON_PATH = 'public/assets'
 const DEFAULT_OUTPUT_MANIFEST_PATH = 'public/manifest.webmanifest'
 const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
 
-!(async () => {
+async function run() {
   const cli = meow(
     `
   Usage
     $ webmanifest --icon <filepath>
-
   Options
     --icon, -i Template icon file <required>
     --manifest, -m Template webmanifest file
     --outputIcon, -oi Output icons directory path
     --outputManifest, -om Output webmanifest directory path
     --sizes, -s Output icon sizes
-
   Examples
     $ webmanifest
     $ webmanifest --icon public/icon.svg --manifest public/manifest.webmanifest --outputIcon public/assets --outputManifest public/manifest.webmanifest --sizes 512,384,192,180,152,144,128,96,72
@@ -82,21 +80,38 @@ const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
   if (iconRectangle.width !== iconRectangle.height) {
     throw new Error('Icon file is required its square.')
   }
-  if (iconRectangle.width && iconRectangle.width < MIN_ACCEPT_IMAGE_RESOLUTION) {
-    throw new Error(`Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`)
+  if (
+    iconRectangle.width &&
+    iconRectangle.width < MIN_ACCEPT_IMAGE_RESOLUTION
+  ) {
+    throw new Error(
+      `Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
+    )
   }
-  if (iconRectangle.height && iconRectangle.height < MIN_ACCEPT_IMAGE_RESOLUTION) {
-    throw new Error(`Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`)
+  if (
+    iconRectangle.height &&
+    iconRectangle.height < MIN_ACCEPT_IMAGE_RESOLUTION
+  ) {
+    throw new Error(
+      `Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
+    )
   }
 
   const ascendingOrder = (a: number, b: number) => (a < b ? 1 : -1)
 
   const outputSizes = cli.flags.sizes.includes(ICON_SIZE_DELIMITER)
-    ? cli.flags.sizes.split(ICON_SIZE_DELIMITER).map(Number).filter(Number).sort(ascendingOrder)
+    ? cli.flags.sizes
+        .split(ICON_SIZE_DELIMITER)
+        .map(Number)
+        .filter(Number)
+        .sort(ascendingOrder)
     : [Number(cli.flags.sizes)].filter(Number)
 
   for (const size of outputSizes) {
-    await sharp(cli.flags.icon).resize(size, size).png().toFile(`${cli.flags.outputIcon}/icon-${size}x${size}.png`)
+    await sharp(cli.flags.icon)
+      .resize(size, size)
+      .png()
+      .toFile(`${cli.flags.outputIcon}/icon-${size}x${size}.png`)
     console.log(`Output icon: ${cli.flags.outputIcon}/icon-${size}x${size}.png`)
   }
 
@@ -110,8 +125,14 @@ const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
     })),
   }
 
-  await writeJSON(cli.flags.outputManifest, outputManifestContent, { spaces: 2 })
+  await writeJSON(cli.flags.outputManifest, outputManifestContent, {
+    spaces: 2,
+  })
   console.log(`Output webmanifest: ${cli.flags.outputManifest}`)
 
-  console.log('\n🎉 All icons and webmanifest file is generated successfully.\n')
-})()
+  console.log(
+    '\n🎉 All icons and webmanifest file is generated successfully.\n'
+  )
+}
+
+run()

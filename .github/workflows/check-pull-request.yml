@@ -1,0 +1,36 @@
+name: check-pull-request
+on: pull_request
+env:
+  CI: true
+  TZ: Asia/Tokyo
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: npm run build
+  automerge:
+    runs-on: ubuntu-latest
+    needs:
+      - check
+      - build
+    steps:
+      - uses: ridedott/merge-me-action@master
+        if: github.actor == 'dependabot[bot]'
+        with:
+          MERGE_METHOD: SQUASH
+          GITHUB_LOGIN: dependabot[bot]
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
