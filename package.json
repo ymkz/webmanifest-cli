@@ -1,6 +1,6 @@
 {
   "name": "webmanifest-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A generator of webmanifest and icons",
   "repository": {
     "type": "git",
