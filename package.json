@@ -6,11 +6,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com/ymkz/webmanifest-cli.git"
   },
-  "homepage": "https://github.com/ymkz/webmanifest-cli#readme",
-  "bugs": {
-    "url": "https://github.com/ymkz/webmanifest-cli/issues"
-  },
-  "author": "",
   "license": "MIT",
   "engines": {
     "node": ">=12"
@@ -22,13 +17,9 @@
   "files": [
     "dist"
   ],
-  "keywords": [
-    "generator",
-    "icon",
-    "webmanifest"
-  ],
   "scripts": {
     "build": "tsup src/index.ts",
+    "codecheck": "prettier --check .",
     "dev": "esno src/index.ts",
     "format": "prettier --write .",
     "lint": "npm run typecheck && npm run format",
@@ -47,7 +38,6 @@
     "@types/node": "^14.11.8",
     "@types/sharp": "^0.27.0",
     "esno": "^0.4.0",
-    "husky": "^5.0.9",
     "prettier": "^2.1.2",
     "prettier-plugin-organize-imports": "^1.1.1",
     "prettier-plugin-pkg": "^0.8.0",
@@ -59,14 +49,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "prettier": {
-    "printWidth": 80,
     "semi": false,
     "singleQuote": true
   }

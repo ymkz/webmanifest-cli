@@ -1,0 +1,20 @@
+name: healthcheck
+on:
+  push:
+    branches:
+      - $default-branch
+env:
+  CI: true
+  TZ: Asia/Tokyo
+jobs:
+  all:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.4
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run codecheck
+      - run: npm run build

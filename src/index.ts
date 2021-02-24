@@ -7,132 +7,125 @@ import sharp from 'sharp'
 
 const ICON_SIZE_DELIMITER = ','
 const MIN_ACCEPT_IMAGE_RESOLUTION = 512
-const DEFAULT_INPUT_ICON_PATH = 'public/icon.svg'
-const DEFAULT_INPUT_MANIFEST_PATH = 'public/manifest.webmanifest'
-const DEFAULT_OUTPUT_ICON_PATH = 'public/assets'
-const DEFAULT_OUTPUT_MANIFEST_PATH = 'public/manifest.webmanifest'
-const DEFAULT_OUTPUT_SIZES = '512,384,192,180,152,144,128,96,72'
+const DEFAULT_INPUT_ICON_PATH = 'public/favicon.svg'
+const DEFAULT_INPUT_MANIFEST_PATH = 'public/site.webmanifest'
+const DEFAULT_OUTPUT_PATH = 'public'
+const DEFAULT_OUTPUT_SIZES = '180, 192, 512'
 
 async function run() {
-  const cli = meow(
+  const { flags } = meow(
     `
   Usage
-    $ webmanifest --icon <filepath>
+    $ webmanifest --icon <file>
+
   Options
-    --icon, -i Template icon file <required>
-    --manifest, -m Template webmanifest file
-    --outputIcon, -oi Output icons directory path
-    --outputManifest, -om Output webmanifest directory path
-    --sizes, -s Output icon sizes
+    --icon       Template icon file
+    --manifest   Template webmanifest file
+    --output     Output directory path
+
   Examples
-    $ webmanifest
-    $ webmanifest --icon public/icon.svg --manifest public/manifest.webmanifest --outputIcon public/assets --outputManifest public/manifest.webmanifest --sizes 512,384,192,180,152,144,128,96,72
+    $ webmanifest --help
+    $ webmanifest --icon public/icon.svg --manifest public/site.webmanifest
   `,
     {
       flags: {
         icon: {
           type: 'string',
-          alias: 'i',
           default: DEFAULT_INPUT_ICON_PATH,
         },
         manifest: {
           type: 'string',
-          alias: 'm',
           default: DEFAULT_INPUT_MANIFEST_PATH,
         },
-        outputIcon: {
+        output: {
           type: 'string',
-          alias: 'oi',
-          default: DEFAULT_OUTPUT_ICON_PATH,
-        },
-        outputManifest: {
-          type: 'string',
-          alias: 'om',
-          default: DEFAULT_OUTPUT_MANIFEST_PATH,
+          default: DEFAULT_OUTPUT_PATH,
         },
         sizes: {
           type: 'string',
-          alias: 's',
           default: DEFAULT_OUTPUT_SIZES,
         },
       },
     }
   )
 
-  if (!(await pathExists(cli.flags.icon))) {
-    throw new Error(`${cli.flags.icon} does not exists.`)
+  // パスの存在を確認
+  if (!(await pathExists(flags.icon))) {
+    throw new Error(`${flags.icon} does not exists.`)
   }
-  if (!(await pathExists(cli.flags.manifest))) {
-    throw new Error(`${cli.flags.manifest} does not exists.`)
+  if (!(await pathExists(flags.manifest))) {
+    throw new Error(`${flags.manifest} does not exists.`)
   }
-  if (!(await pathExists(cli.flags.outputIcon))) {
-    throw new Error(`${cli.flags.outputIcon} does not exists.`)
-  }
-  if (!(await pathExists(cli.flags.outputManifest))) {
-    throw new Error(`${cli.flags.outputManifest} does not exists.`)
+  if (!(await pathExists(flags.output))) {
+    throw new Error(`${flags.output} does not exists.`)
   }
 
-  const iconRectangle = imageSize(cli.flags.icon)
+  const iconRectangle = imageSize(flags.icon)
 
+  // widthとheightが異常な場合はinvalidとして弾く
   if (!iconRectangle.width || !iconRectangle.height) {
     throw new Error('Icon file is invalid.')
   }
+
+  // 正方形以外は弾く
   if (iconRectangle.width !== iconRectangle.height) {
     throw new Error('Icon file is required its square.')
   }
-  if (
-    iconRectangle.width &&
-    iconRectangle.width < MIN_ACCEPT_IMAGE_RESOLUTION
-  ) {
-    throw new Error(
-      `Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
-    )
-  }
-  if (
-    iconRectangle.height &&
-    iconRectangle.height < MIN_ACCEPT_IMAGE_RESOLUTION
-  ) {
-    throw new Error(
-      `Icon file is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
-    )
+
+  // svg以外のファイルは大きさのチェックを実施
+  if (!flags.icon.endsWith('.svg')) {
+    if (iconRectangle.width < MIN_ACCEPT_IMAGE_RESOLUTION) {
+      throw new Error(
+        `Icon file width is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
+      )
+    }
+    if (iconRectangle.height < MIN_ACCEPT_IMAGE_RESOLUTION) {
+      throw new Error(
+        `Icon file height is required larger than ${MIN_ACCEPT_IMAGE_RESOLUTION}px.`
+      )
+    }
   }
 
-  const ascendingOrder = (a: number, b: number) => (a < b ? 1 : -1)
+  // 出力サイズを文字列から配列にパース
+  // デリミタが無い場合は数字としてパース
+  const outputSizes = flags.sizes.includes(ICON_SIZE_DELIMITER)
+    ? flags.sizes.split(ICON_SIZE_DELIMITER).map(Number).filter(Number)
+    : [Number(flags.sizes)].filter(Number)
 
-  const outputSizes = cli.flags.sizes.includes(ICON_SIZE_DELIMITER)
-    ? cli.flags.sizes
-        .split(ICON_SIZE_DELIMITER)
-        .map(Number)
-        .filter(Number)
-        .sort(ascendingOrder)
-    : [Number(cli.flags.sizes)].filter(Number)
-
+  // paddingは1/3で背景色は#fffで各サイズのPNG画像を生成
   for (const size of outputSizes) {
-    await sharp(cli.flags.icon)
-      .resize(size, size)
+    const padding = Math.floor(size / 6)
+    const content = Math.floor(size - padding * 2)
+    const output = `${flags.output}/icon-x${size}.png`
+    await sharp(flags.icon)
+      .flatten({ background: '#fff' })
       .png()
-      .toFile(`${cli.flags.outputIcon}/icon-${size}x${size}.png`)
-    console.log(`Output icon: ${cli.flags.outputIcon}/icon-${size}x${size}.png`)
+      .resize(content, content)
+      .extend({
+        background: '#fff',
+        top: padding,
+        left: padding,
+        bottom: padding,
+        right: padding,
+      })
+      .toFile(output)
+    console.log(`Output icon: ${output}`)
   }
 
-  const inputManifest = await readJSON(cli.flags.manifest)
+  const inputManifest = await readJSON(flags.manifest)
   const outputManifestContent = {
     ...inputManifest,
     icons: outputSizes.map((size) => ({
-      src: `icon-${size}x${size}.png`,
+      src: `icon-x${size}.png`,
       sizes: `${size}x${size}`,
       type: 'image/png',
     })),
   }
 
-  await writeJSON(cli.flags.outputManifest, outputManifestContent, {
-    spaces: 2,
-  })
-  console.log(`Output webmanifest: ${cli.flags.outputManifest}`)
+  await writeJSON(flags.manifest, outputManifestContent, { spaces: 2 })
+  console.log(`Output webmanifest: ${flags.manifest}`)
 
-  console.log(
-    '\n🎉 All icons and webmanifest file is generated successfully.\n'
-  )
+  console.log('\n🎉 All process successfully done.\n')
 }
 
 run()
