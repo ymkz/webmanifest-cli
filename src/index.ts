@@ -97,10 +97,9 @@ async function run() {
     const padding = Math.floor(size / 6)
     const content = Math.floor(size - padding * 2)
     const output = `${flags.output}/icon-x${size}.png`
-    await sharp(flags.icon)
-      .flatten({ background: '#fff' })
-      .png()
+    await sharp(flags.icon, { density: 2400 })
       .resize(content, content)
+      .flatten({ background: '#fff' })
       .extend({
         background: '#fff',
         top: padding,
@@ -108,6 +107,7 @@ async function run() {
         bottom: padding,
         right: padding,
       })
+      .png()
       .toFile(output)
     console.log(`Output icon: ${output}`)
   }
